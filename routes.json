@@ -1,3 +1,4 @@
 {
-    "/api/notes":"/notes"
+    "/api/notes":"/notes",
+    "/api/notes/:id":"/notes/:id"
 }
