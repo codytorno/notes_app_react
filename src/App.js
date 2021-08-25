@@ -45,14 +45,18 @@ const App = () => {
   // Event handler -> Toggles importance button on each item and updates the json server value
   const handlebuttonToggle = (id) => {
     const note = notes.find((n) => n.id === id);
+    // update the important flag to whatever it isnt current
     const changedNote = { ...note, important: !note.important };
 
+    // pass the updated note to the api
     noteServices
       .update(id, changedNote)
       .then((returnedNote) => {
+        // update the notes list in react
         setNotes(notes.map((note) => (note.id !== id ? note : returnedNote)));
       })
       .catch((error) => {
+        // if we were unable to update the note with the server show and error message
         setErrorMessage(
           `the note '${note.content}' was already deleted from server`
         );
